@@ -11,17 +11,17 @@ playbook:
 - src/playbook/**/*
 
 appx:
-- src/playbook/Configuration/atlas/appx.yml
+- src/playbook/Configuration/ebos/appx.yml
 
 components:
-- src/playbook/Configuration/atlas/components.yml
+- src/playbook/Configuration/ebos/components.yml
 
 services:
-- src/playbook/Configuration/atlas/services.yml
+- src/playbook/Configuration/ebos/services.yml
 
 tweaks:
 - src/playbook/Configuration/tweaks.yml
 - src/playbook/Configuration/tweaks/**/*
 
 desktop folder:
-- src/playbook/Executables/AtlasDesktop/**/*
+- src/playbook/Executables/EBOSDesktop/**/*
