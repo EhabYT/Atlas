@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://ebos.net" target="_blank"><img src="images/github-banner.png" alt="EBOS" width="800"></a>
+  <a href="https://ebos.net" target="_blank"><img src="images/github-banner.png" alt="Eb" width="800"></a>
 </h1>
   <p align="center">
     <a href="https://github.com/EBOS/EBOS/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/ebos-os/ebos?style=for-the-badge&logo=github&color=1A91FF"/></a>
