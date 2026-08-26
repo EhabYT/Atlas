@@ -6,9 +6,9 @@
 @exit /b %ERRORLEVEL%
 : #>
 
-$scriptPath = "$env:SystemRoot\Web\Wallpaper\MeetRevision\WALLPAPER.ps1"
-& $scriptPath -Mode Desktop -ImagePath "$env:SystemRoot\Web\Wallpaper\MeetRevision\v2\desktop.jpg"
-& $scriptPath -Mode LockScreen -ImagePath "$env:SystemRoot\Web\Wallpaper\MeetRevision\v2\lockscreen.jpg"
+$scriptPath = "$env:SystemRoot\Web\Wallpaper\EBOS\WALLPAPER.ps1"
+& $scriptPath -Mode Desktop -ImagePath "$env:SystemRoot\Web\Wallpaper\EBOS\v2\desktop.jpg"
+& $scriptPath -Mode LockScreen -ImagePath "$env:SystemRoot\Web\Wallpaper\EBOS\v2\lockscreen.jpg"
 
 # Not an ideal place
 # RARE Case, but on W10, when legacy Mail app is uninstalled, Outlook for Windows gets installed automatically

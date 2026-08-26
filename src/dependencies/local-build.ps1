@@ -147,7 +147,7 @@ while ($true) { Get-Content -Wait -LiteralPath $a -EA 0 | Write-Output; Start-Sl
 		}
 	}
 
-	$startYmlPath = Separator "Configuration\ebos\start.yml"
+	$startYmlPath = Separator "Configuration\windows\init.yml"
 	$tempStartYmlPath = Separator "$playbookTemp\$startYmlPath"
 	if ($removeDependencies) {
 		if (Test-Path $startYmlPath -PathType Leaf) {
@@ -166,7 +166,7 @@ while ($true) { Get-Content -Wait -LiteralPath $a -EA 0 | Write-Output; Start-Sl
 		}
 	}
 
-	$oemYmlPath = Separator "Configuration\tweaks\misc\config-oem-information.yml"
+	$oemYmlPath = Separator "Configuration\misc\config-oem-information.yml"
 	$tempOemYmlPath = Separator "$playbookTemp\$oemYmlPath"
 	if (Test-Path $oemYmlPath -PathType Leaf) {
 		$confXml = ([xml](Get-Content "playbook.conf" -Raw -EA 0)).Playbook
