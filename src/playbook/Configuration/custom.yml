@@ -1,7 +1,33 @@
 ---
-title: Root Playbook File
-description: Runs all of the Playbook files
+title: EBOS
+description: Unified entry point — runs the EBOS Core preflight, all EBOS domains, and the recovery/validation tail
+privilege: TrustedInstaller
 actions:
+  # ==================================================================
+  #  EBOS — unified Windows optimization platform
+  #
+  #  Pipeline (each stage is a domain under Configuration\):
+  #    1. Preflight   (hive, files, notifications)
+  #    2. Core        (detection, pre-change backup)
+  #    3. Windows     (packages, components, services, updates, debloat)
+  #    4. Privacy     (telemetry, tracking, advertising, cloud)
+  #    5. Security    (hardening, remote access)
+  #    6. Optimization (kernel, boot, power, storage, multimedia)
+  #    7. Gaming      (Game Mode, Game Bar, input, GPU scheduling)
+  #    8. Network     (TCP, SMB, sharing hardening)
+  #    9. UI          (Explorer, taskbar, Start, shell, Liquid Glass)
+  #   10. Misc        (general QoL)
+  #   11. Scripts     (script-backed configuration, power last)
+  #   12. Recovery    (post-change backups, legacy reverts)
+  #   13. Core tail   (system validation)
+  #
+  #  Legacy note: this playbook unifies two former projects into one
+  #  system. Their functionality lives on in the domains above; there
+  #  are no separate products, modes or folders. Attribution for the
+  #  integrated third-party components is kept in docs/ATTRIBUTION.md.
+  # ==================================================================
+
+  # ------------------------- 1. PREFLIGHT ------------------------- #
   # some changes requires default user access. loading the hive before everything else is required
   - !powerShell:
     command: 'reg load HKU\AME_UserHive_Default C:\Users\Default\NTUSER.DAT'
@@ -56,8 +82,8 @@ actions:
   # Configure PowerShell first so that other PowerShell scripts work
   # NGEN - .NET assemblies PowerShell optimization
   - !writeStatus: { status: "Optimizing PowerShell" }
-  - !task: { path: 'tweaks\scripts\script-ngen.yml' }
-  - !task: { path: 'tweaks\qol\config-powershell.yml' }
+  - !task: { path: 'scripts\script-ngen.yml' }
+  - !task: { path: 'misc\config-powershell.yml' }
 
   # Disk Cleanup is run first so it can run in the background
   - !writeStatus: { status: "Cleaning up" }
@@ -68,21 +94,48 @@ actions:
     runas: currentUserElevated
 
   # Set hidden Settings pages
-  # Done before everything else as scripts will overwrite it
-  - !task: { path: 'tweaks\qol\set-hidden-settings-pages.yml' }
+  # Done before the domains as their scripts may overwrite it
+  - !task: { path: 'windows\set-hidden-settings-pages.yml' }
 
-  # ReviOS-compatible registry configuration is applied first. EBOS tasks run afterward and remain authoritative for any overlapping settings.
-  - !task: { path: 'revios.yml' }
+  # ------------------------- 2. CORE ------------------------------ #
+  # Hardware detection, compatibility report, pre-change backup
+  - !task: { path: 'core\detect.yml' }
+  - !task: { path: 'core\backup.yml' }
 
-  # Main tasks
-  - !task: { path: 'ebos\start.yml' }
-  - !task: { path: 'ebos\services.yml' }
-  - !task: { path: 'ebos\components.yml' }
-  - !task: { path: 'ebos\appx.yml' }
-  - !task: { path: 'ebos\default.yml' }
-  - !task: { path: 'ebos\revert.yml' }
-  - !task: { path: "tweaks.yml" }
+  # ------------------------- 3. WINDOWS --------------------------- #
+  # Initial environment (PATH, DirectPlay, software), then the
+  # Windows domain (packages, components, services, updates, debloat)
+  - !task: { path: 'windows\init.yml' }
+  - !task: { path: 'windows\index.yml' }
 
+  # ------------------------- 4. PRIVACY --------------------------- #
+  - !task: { path: 'privacy\index.yml' }
+
+  # ------------------------- 5. SECURITY -------------------------- #
+  - !task: { path: 'security\index.yml' }
+
+  # --------------------- 6. OPTIMIZATION -------------------------- #
+  - !task: { path: 'optimization\index.yml' }
+
+  # ------------------------- 7. GAMING ---------------------------- #
+  - !task: { path: 'gaming\index.yml' }
+
+  # ------------------------- 8. NETWORK --------------------------- #
+  - !task: { path: 'network\index.yml' }
+
+  # ------------------------- 9. UI -------------------------------- #
+  - !task: { path: 'ui\index.yml' }
+
+  # ------------------------- 10. MISC ----------------------------- #
+  - !task: { path: 'misc\index.yml' }
+
+  # ------------------------- 11. SCRIPTS -------------------------- #
+  - !task: { path: 'scripts\index.yml' }
+
+  # ------------------------- 12. RECOVERY ------------------------- #
+  - !task: { path: 'recovery\index.yml' }
+
+  # ------------------------- TAIL --------------------------------- #
   # Set hives to HKU default user
   - !writeStatus: { status: "Applying hives..." }
   - !powerShell:
@@ -113,3 +166,7 @@ actions:
     value: 'ExecutionPolicy'
     data: 'RemoteSigned'
     type: REG_SZ
+
+  # --------------------- 13. CORE TAIL ---------------------------- #
+  # Post-install system validation (fail-soft)
+  - !task: { path: 'core\validate.yml' }
