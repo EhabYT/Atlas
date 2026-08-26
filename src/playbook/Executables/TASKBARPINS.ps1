@@ -1,7 +1,7 @@
 param (
     [string]$Browser
 )
-.\AtlasModules\initPowerShell.ps1
+.\EBOSModules\initPowerShell.ps1
 
 # The names are used for the shortcuts in the taskbar
 # If they're changed, e.g. 'Brave', then you need new Favorites & FavoritesResolve
@@ -93,7 +93,7 @@ foreach ($userKey in (Get-RegUserPaths -NoDefault).PsPath) {
         Write-Error "Couldn't find AppData value for $sid!"
     } else {
         Write-Title "Setting '$Browser' taskbar shortcut for '$sid'..."
-        
+
         Write-Output "Clearing current shortcuts..."
         $taskBarAppData = "$appData\$taskBarLocation"
         if (Test-Path $taskBarAppData -PathType Leaf) {

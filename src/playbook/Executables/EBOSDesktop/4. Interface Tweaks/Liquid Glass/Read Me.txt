@@ -1,0 +1,9 @@
+EBOS Liquid Glass
+=================
+
+1. Apply the EBOS Liquid Glass theme from the Windows Themes folder.
+2. Run Enable Liquid Glass Effects to turn on Windows transparency and accent
+   color effects for the current user.
+
+The setting is optional. Use Disable Liquid Glass Effects to turn off the
+transparency and accent-color effects again.

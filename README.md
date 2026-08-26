@@ -1,44 +1,44 @@
 <h1 align="center">
-  <a href="http://atlasos.net" target="_blank"><img src="https://gcore.jsdelivr.net/gh/Atlas-OS/branding@main/banners/banner-v3.png" alt="Atlas" width="800"></a>
+  <a href="http://ebos.net" target="_blank"><img src="https://gcore.jsdelivr.net/gh/EBOS/branding@main/banners/banner-v3.png" alt="EBOS" width="800"></a>
 </h1>
   <p align="center">
-    <a href="https://github.com/Atlas-OS/Atlas/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/atlas-os/atlas?style=for-the-badge&logo=github&color=1A91FF"/></a>
-    <a href="https://github.com/Atlas-OS/Atlas/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/atlas-os/atlas?style=for-the-badge&color=1A91FF" /></a>
-    <a href="https://github.com/Atlas-OS/Atlas/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/atlas-os/atlas?style=for-the-badge&color=1A91FF" /></a>
-    <a href="https://github.com/Atlas-OS/.github/blob/main/profile/CODE_OF_CONDUCT.md"><img alt="Code of Conduct" src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg?style=for-the-badge&color=1A91FF" /></a>
+    <a href="https://github.com/EBOS/EBOS/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/ebos-os/ebos?style=for-the-badge&logo=github&color=1A91FF"/></a>
+    <a href="https://github.com/EBOS/EBOS/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/ebos-os/ebos?style=for-the-badge&color=1A91FF" /></a>
+    <a href="https://github.com/EBOS/EBOS/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/ebos-os/ebos?style=for-the-badge&color=1A91FF" /></a>
+    <a href="https://github.com/EBOS/.github/blob/main/profile/CODE_OF_CONDUCT.md"><img alt="Code of Conduct" src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg?style=for-the-badge&color=1A91FF" /></a>
   </p>
 <p align="center">A transparent and lightweight modification to Windows, designed to optimize performance, privacy and usability.</p>
 
 <p align="center">
-  <a href="https://atlasos.net" target="_blank">🌐 Website</a>
+  <a href="https://ebos.net" target="_blank">🌐 Website</a>
   •
-  <a href="https://docs.atlasos.net" target="_blank">📚 Documentation</a>
+  <a href="https://docs.ebos.net" target="_blank">📚 Documentation</a>
   •
-  <a href="https://discord.atlasos.net" target="_blank">☎️ Discord</a>
+  <a href="https://discord.ebos.net" target="_blank">☎️ Discord</a>
   •
-  <a href="https://github.com/Atlas-OS/Atlas/discussions" target="_blank">💬 Discussions</a>
+  <a href="https://github.com/EBOS/EBOS/discussions" target="_blank">💬 Discussions</a>
 </p>
 
 ## 📚 **Important Documentation**
-- [Installation](https://docs.atlasos.net/getting-started/installation/)
-- [Install FAQ](https://docs.atlasos.net/install-faq/removed-features/)
-- [General FAQ](https://docs.atlasos.net/general-faq/atlas-and-security/)
-- [Contribution Guidelines](https://docs.atlasos.net/contributing/contribution-guidelines/)
-- [Branding](https://docs.atlasos.net/branding/)
+- [Installation](https://docs.ebos.net/getting-started/installation/)
+- [Install FAQ](https://docs.ebos.net/install-faq/removed-features/)
+- [General FAQ](https://docs.ebos.net/general-faq/ebos-and-security/)
+- [Contribution Guidelines](https://docs.ebos.net/contributing/contribution-guidelines/)
+- [Branding](https://docs.ebos.net/branding/)
 
-## 🤔 What is Atlas?
+## 🤔 What is EBOS?
 
-AtlasOS, or Atlas, is an open-source project that enhances Windows by conveniently applying privacy, usability, and performance optimizations, all while maintaining functionality and [customizability](https://docs.atlasos.net/getting-started/post-installation/atlas-folder/general-configuration/).
+EBOS, or EBOS, is an open-source project that enhances Windows by conveniently applying privacy, usability, and performance optimizations, all while maintaining functionality and [customizability](https://docs.ebos.net/getting-started/post-installation/ebos-folder/general-configuration/).
 
-## 👀 Why Atlas?
+## 👀 Why EBOS?
 ### 🔒 Enhanced Privacy
-Atlas removes the majority of telemetry embedded within Windows and implements numerous group policies to minimize data collection. However, it cannot ensure privacy outside the scope of Windows, such as browsers and other third-party applications.
+EBOS removes the majority of telemetry embedded within Windows and implements numerous group policies to minimize data collection. However, it cannot ensure privacy outside the scope of Windows, such as browsers and other third-party applications.
 
 ### 📈 Optimized Performance
-Atlas strikes a balance between performance and compatibility. It implements numerous meaningful changes to improve Windows performance and responsiveness without breaking essential features. Atlas will not do tweaks for a placebo effect or marginal gains, making Atlas more stable and compatible.
+EBOS strikes a balance between performance and compatibility. It implements numerous meaningful changes to improve Windows performance and responsiveness without breaking essential features. EBOS will not do tweaks for a placebo effect or marginal gains, making EBOS more stable and compatible.
 
 ### 🛡️ Security Features
-Most Windows modifications remove key security features most users need to maintain a secure system. On the other hand, Atlas allows users to customize their security at their own risk while informing users about each option's [pros and cons](https://docs.atlasos.net/getting-started/post-installation/atlas-folder/security/).
+Most Windows modifications remove key security features most users need to maintain a secure system. On the other hand, EBOS allows users to customize their security at their own risk while informing users about each option's [pros and cons](https://docs.ebos.net/getting-started/post-installation/ebos-folder/security/).
 
 Some optional security features are:
 
@@ -50,23 +50,37 @@ Some optional security features are:
 - Core isolation features
 
 ### ✅ Increased Usability
-Atlas applies many modifications and default settings to make Windows easier to use. This includes removing commonly unneeded applications (which are reinstallable), configuring many aspects of the interface, disabling advertisements, and much more.
+EBOS applies many modifications and default settings to make Windows easier to use. This includes removing commonly unneeded applications (which are reinstallable), configuring many aspects of the interface, disabling advertisements, and much more.
 
 ### 🔍 Open Source and Transparent
 
-Unlike custom Windows ISOs, Atlas is more straightforward to audit due to the use of [AME Wizard](https://amelabs.net). AME Wizard is controlled by Playbooks, a customizable script-esque system that can perform various tasks.
+Unlike custom Windows ISOs, EBOS is more straightforward to audit due to the use of [AME Wizard](https://amelabs.net). AME Wizard is controlled by Playbooks, a customizable script-esque system that can perform various tasks.
 
-Playbooks are renamed **.zip** archives, with the password [`malte`](https://docs.amelabs.net/developers/getting-started/creation.html). As they primarily consist of plain text, Playbooks enable transparency, unlike custom Windows ISOs, which have many entry points for malicious activity. 
+Playbooks are renamed **.zip** archives, with the password [`malte`](https://docs.amelabs.net/developers/getting-started/creation.html). As they primarily consist of plain text, Playbooks enable transparency, unlike custom Windows ISOs, which have many entry points for malicious activity.
 
-The few binaries in the Playbook are open source in our [`utilities` repository](https://github.com/Atlas-OS/utilities), with the [hashes listed here](https://github.com/Atlas-OS/Atlas/blob/main/src/playbook/Executables/AtlasModules/README.md).
+The few binaries in the Playbook are open source in our [`utilities` repository](https://github.com/EBOS/utilities), with the [hashes listed here](https://github.com/EBOS/EBOS/blob/main/src/playbook/Executables/EBOSModules/README.md).
 
-Although the GUI is not open source for AME Wizard, AME Wizard's entire backend (called [TrustedUninstaller](https://github.com/Ameliorated-LLC/trusted-uninstaller-cli)) is open source under MIT, which contains each action used to run Atlas. The Atlas Playbook is open source under the [GPLv3 license](https://github.com/Atlas-OS/Atlas/blob/main/LICENSE).
+Although the GUI is not open source for AME Wizard, AME Wizard's entire backend (called [TrustedUninstaller](https://github.com/Ameliorated-LLC/trusted-uninstaller-cli)) is open source under MIT, which contains each action used to run EBOS. The integrated EBOS and ReviOS playbook sources are distributed under the [Creative Commons Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ### 🔒 Legal Compliance
-As Atlas doesn't redistribute a modified Windows ISO, it complies with the [Microsoft Windows Usage Terms](https://www.microsoft.com/content/dam/microsoft/usetm/documents/windows/11/oem-(pre-installed)/UseTerms_OEM_Windows_11_English.pdf). In addition, Atlas does not alter activation in Windows.
+As EBOS doesn't redistribute a modified Windows ISO, it complies with the [Microsoft Windows Usage Terms](https://www.microsoft.com/content/dam/microsoft/usetm/documents/windows/11/oem-(pre-installed)/UseTerms_OEM_Windows_11_English.pdf). In addition, EBOS does not alter activation in Windows.
 
 ## 🎨 Brand kit
-Want to create your own Atlas wallpaper with some original creative designs? Visit our [Branding Kit on Docs](https://docs.atlasos.net/branding/) and share your creations on our [GitHub Discussions](https://github.com/Atlas-OS/Atlas/discussions/categories/community-artwork)!
+Want to create your own EBOS wallpaper with some original creative designs? Visit our [Branding Kit on Docs](https://docs.ebos.net/branding/) and share your creations on our [GitHub Discussions](https://github.com/EBOS/EBOS/discussions/categories/community-artwork)!
 
 ## 💙 Contributors
-<a href="https://github.com/Atlas-OS/Atlas/graphs/contributors" target="_blank"><img src="https://contrib.rocks/image?repo=Atlas-OS/Atlas&columns=18" alt="Avatars of all contributors"></a>
+<a href="https://github.com/EBOS/EBOS/graphs/contributors" target="_blank"><img src="https://contrib.rocks/image?repo=EBOS/EBOS&columns=18" alt="Avatars of all contributors"></a>
+
+
+## ReviOS integration and attribution
+
+This project incorporates the ReviOS Playbook from [Revision](https://github.com/meetrevision/playbook). ReviOS-derived files remain attributed to Revision and are provided under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) license. See `LICENSE` for the full license text.
+
+### All-in-one playbook
+
+EBOS and ReviOS are combined into a single playbook. Everything needed to build and run the unified package lives under `src/playbook/`:
+
+- **EBOS:** manifests and build files are under `src/playbook/`; the `Create and Validate EBOS Playbook` workflow creates the single EBOS artifact.
+- **ReviOS:** the ReviOS task set and assets are folded into `src/playbook/` (tasks under `src/playbook/Configuration/revios/`).
+
+The EBOS Playbook imports ReviOS tasks through `src/playbook/Configuration/revios.yml` before it runs the standard EBOS tasks, so EBOS remains authoritative for overlapping settings. The unified run includes ReviOS package, service, registry, revert, and finalization tasks. These tasks can remove Windows components and applications; use the unified playbook only on a fresh installation after backing up data.

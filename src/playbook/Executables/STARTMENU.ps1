@@ -1,4 +1,4 @@
-.\AtlasModules\initPowerShell.ps1
+.\EBOSModules\initPowerShell.ps1
 
 foreach ($userKey in (Get-RegUserPaths).PsPath) {
     $default = if ($userKey -match 'AME_UserHive_Default') { $true }
@@ -10,14 +10,14 @@ foreach ($userKey in (Get-RegUserPaths).PsPath) {
     } else {
         (Get-ItemProperty "$userKey\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" -Name 'Local AppData' -EA 0).'Local AppData'
     }
-    
+
     Write-Title "Configuring Start Menu for '$sid'..."
     if ([string]::IsNullOrEmpty($appData) -or !(Test-Path $appData)) {
         Write-Error "Couldn't find AppData value for $sid!"
     } else {
         Write-Output "Copying default layout XML"
         Copy-Item -Path "Layout.xml" -Destination "$appdata\Microsoft\Windows\Shell\LayoutModification.xml" -Force
-        
+
         if (!$default) {
             Write-Output "Clearing Start Menu pinned items"
 
@@ -30,10 +30,10 @@ foreach ($userKey in (Get-RegUserPaths).PsPath) {
             }
         }
     }
-    
+
     if (!$default) {
         Write-Output "Clearing default 'tilegrid'"
-        $tilegrid = Get-ChildItem -Path "$userKey\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount" -Recurse | Where-Object { $_.Name -match "start.tilegrid" }    
+        $tilegrid = Get-ChildItem -Path "$userKey\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount" -Recurse | Where-Object { $_.Name -match "start.tilegrid" }
         foreach ($key in $tilegrid) {
             Remove-Item -Path $key.PSPath -Force
         }

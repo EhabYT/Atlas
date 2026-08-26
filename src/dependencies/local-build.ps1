@@ -5,7 +5,7 @@ param (
 	[switch]$NoPassword,
 	[ValidateSet('Dependencies', 'Requirements', 'WinverRequirement', 'Verification', IgnoreCase = $true)]
 	[array]$Removals,
-	[string]$FileName = "Atlas Test"
+	[string]$FileName = "EBOS Test"
 )
 
 $removals | % { Set-Variable -Name "remove$_" -Value $true }
@@ -15,7 +15,7 @@ function Separator {
 	return $args -replace '\\', "$([IO.Path]::DirectorySeparatorChar)"
 }
 
-# Adds Atlas PSModulesPath to profile for the PowerShell Extension
+# Adds EBOS PSModulesPath to profile for the PowerShell Extension
 $userEnv = [System.EnvironmentVariableTarget]::User
 if ($psEditor.Workspace.Path -and ([Environment]::GetEnvironmentVariable('LOCALBUILD_DONT_ASK_FOR_MODULES', $userEnv) -ne "$true")) {
 	function DontAsk {
@@ -24,8 +24,8 @@ if ($psEditor.Workspace.Path -and ([Environment]::GetEnvironmentVariable('LOCALB
 
 	$title = 'Adding to PowerShell profile'
 	$description = @"
-Atlas includes some PowerShell modules by default that aren't usually recognised by the VSCode PowerShell extension.
-Would you like to add to your PowerShell profile to automatically recognise these modules when developing Atlas?`n`n
+EBOS includes some PowerShell modules by default that aren't usually recognised by the VSCode PowerShell extension.
+Would you like to add to your PowerShell profile to automatically recognise these modules when developing EBOS?`n`n
 "@
 	switch ($host.ui.PromptForChoice($title, $description, ('&Yes', '&No', "&Don't ask me again"), 0)) {
 		0 {
@@ -36,11 +36,11 @@ Would you like to add to your PowerShell profile to automatically recognise thes
 			Add-Content -Path $PROFILE -Value @'
 #--LOCAL-BUILD-MODULES-START--#
 $workspace = $psEditor.Workspace.Path
-$modulesFile = "$workspace\.atlasPsModulesPath"
+$modulesFile = "$workspace\.ebosPsModulesPath"
 if ([bool](Test-Path 'Env:\VSCODE_*') -and (Test-Path $workspace -EA 0) -and (Test-Path $modulesFile -EA 0)) {
 	$modulePath = Join-Path $workspace (Get-Content $modulesFile -Raw)
 	if (!(Test-Path $modulePath -PathType Container)) {
-		Write-Warning "Couldn't find module path specified in '$modulesFile', no Atlas modules can be loaded."
+		Write-Warning "Couldn't find module path specified in '$modulesFile', no EBOS modules can be loaded."
 	} else {
 		$env:PSModulePath += [IO.Path]::PathSeparator + $modulePath
 	}
@@ -135,7 +135,7 @@ Select-Object -First 1).FullName '\OutputBuffer.txt';
 while ($true) { Get-Content -Wait -LiteralPath $a -EA 0 | Write-Output; Start-Sleep 1 }
 }
 			[string]$liveLogText = ($liveLogScript -replace '"','"""' -replace "'","''").Trim() -replace "`r?`n", " "
-			
+
 			$actionsIndex = $customYml.IndexOf('actions:')
 			$newCustomYml = $customYml[0..$actionsIndex] + `
 				"  - !cmd: {command: 'start `"AME Wizard Live Log`" PowerShell -NoP -C `"$liveLogText`"'}" + `
@@ -147,7 +147,7 @@ while ($true) { Get-Content -Wait -LiteralPath $a -EA 0 | Write-Output; Start-Sl
 		}
 	}
 
-	$startYmlPath = Separator "Configuration\atlas\start.yml"
+	$startYmlPath = Separator "Configuration\ebos\start.yml"
 	$tempStartYmlPath = Separator "$playbookTemp\$startYmlPath"
 	if ($removeDependencies) {
 		if (Test-Path $startYmlPath -PathType Leaf) {
@@ -177,10 +177,10 @@ while ($true) { Get-Content -Wait -LiteralPath $a -EA 0 | Write-Output; Start-Sl
 				$version = $version + ' (dev)'
 			}
 
-			$oemToReplace = 'AtlasVersionUndefined'
+			$oemToReplace = 'EBOSVersionUndefined'
 			$oemYml = Get-Content -Path $oemYmlPath -Raw
 			$tempOemYml = $oemYml -replace $oemToReplace, $version
-			
+
 			if ($tempOemYml -eq $oemYml) {
 				Write-Error "Couldn't find OEM string '$oemToReplace'."
 			} else {
@@ -218,7 +218,7 @@ while ($true) { Get-Content -Wait -LiteralPath $a -EA 0 | Write-Output; Start-Sl
 	$apbxTmpPath = $apbxPath + '.tmp'
 	if (Test-Path $apbxTmpPath) {
 		Remove-Item -Path $apbxPath
-		Rename-Item -Path $apbxTmpPath -NewName $apbxPath 
+		Rename-Item -Path $apbxTmpPath -NewName $apbxPath
 	}
 	Write-Host "Built successfully! Path: `"$apbxPath`"" -ForegroundColor Green
 	if (!$DontOpenPbLocation) {

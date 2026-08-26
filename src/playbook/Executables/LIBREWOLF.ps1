@@ -1,4 +1,4 @@
-.\AtlasModules\initPowerShell.ps1
+.\EBOSModules\initPowerShell.ps1
 $ProgressPreference = "SilentlyContinue"
 $ErrorActionPreference = "Stop"
 $timeouts = @("--connect-timeout", "10", "--retry", "5", "--retry-delay", "0", "--retry-all-errors")
@@ -55,7 +55,7 @@ foreach ($User in (Get-CimInstance -ClassName Win32_UserAccount -Filter "Disable
 	$7Hours   = New-ScheduledTaskTrigger -Once -At (Get-Date -Minute 0 -Second 0).AddHours(1) -RepetitionInterval (New-TimeSpan -Hours 7)
 	$AtLogon  = New-ScheduledTaskTrigger -AtLogOn
 	$AtLogon.Delay = 'PT1M'
-	Register-ScheduledTask -TaskName "LibreWolf WinUpdater ($User)" -Action $Action -Settings $Settings -Trigger $7Hours,$AtLogon -User $User -RunLevel Highest -Force | Out-Null	
+	Register-ScheduledTask -TaskName "LibreWolf WinUpdater ($User)" -Action $Action -Settings $Settings -Trigger $7Hours,$AtLogon -User $User -RunLevel Highest -Force | Out-Null
 }
 
 Write-Output "Adding LibreWolf WinUpdater shortcut"

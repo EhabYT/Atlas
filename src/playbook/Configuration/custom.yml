@@ -7,7 +7,7 @@ actions:
     command: 'reg load HKU\AME_UserHive_Default C:\Users\Default\NTUSER.DAT'
     oobe: false
     wait: true
-  - !writeStatus: { status: "Deleting old AtlasOS folders" }
+  - !writeStatus: { status: "Deleting old EBOS folders" }
   - !powerShell:
     command: '.\STOPFOLDERPROC.ps1'
     exeDir: true
@@ -17,8 +17,8 @@ actions:
   - !powerShell:
     command: |
       $windir = [Environment]::GetFolderPath('Windows')
-      Remove-Item -LiteralPath "$windir\AtlasDesktop" -Force -Recurse
-      Remove-Item -LiteralPath "$windir\AtlasModules" -Force -Recurse
+      Remove-Item -LiteralPath "$windir\EBOSDesktop" -Force -Recurse
+      Remove-Item -LiteralPath "$windir\EBOSModules" -Force -Recurse
     wait: true
     exeDir: true
     oobe: false
@@ -29,14 +29,14 @@ actions:
     command: |
       $windir = [Environment]::GetFolderPath('Windows')
       @(
-          'AtlasModules',
-          'AtlasDesktop'
+          'EBOSModules',
+          'EBOSDesktop'
       ) | ForEach-Object {
           if (!(Test-Path $_)) { exit 1 }
           Copy-Item -Path $_ -Destination $windir -Force -Recurse
           if (!$?) { exit 2 }
       }
-      Start-Process -FilePath """$windir\AtlasDesktop\6. Advanced Configuration\Process Explorer\Uninstall Process Explorer.cmd""" -ArgumentList "/silent" -WindowStyle Hidden
+      Start-Process -FilePath """$windir\EBOSDesktop\6. Advanced Configuration\Process Explorer\Uninstall Process Explorer.cmd""" -ArgumentList "/silent" -WindowStyle Hidden
       Copy-Item -Path 'Themes\*' -Destination """$windir\Resources\Themes""" -Force -Recurse
     weight: 10
     wait: true
@@ -71,13 +71,17 @@ actions:
   # Done before everything else as scripts will overwrite it
   - !task: { path: 'tweaks\qol\set-hidden-settings-pages.yml' }
 
+  # ReviOS-compatible registry configuration is applied first. EBOS tasks run
+  # afterward and remain authoritative for any overlapping settings.
+  - !task: { path: 'revios.yml' }
+
   # Main tasks
-  - !task: { path: 'atlas\start.yml' }
-  - !task: { path: 'atlas\services.yml' }
-  - !task: { path: 'atlas\components.yml' }
-  - !task: { path: 'atlas\appx.yml' }
-  - !task: { path: 'atlas\default.yml' }
-  - !task: { path: 'atlas\revert.yml' }
+  - !task: { path: 'ebos\start.yml' }
+  - !task: { path: 'ebos\services.yml' }
+  - !task: { path: 'ebos\components.yml' }
+  - !task: { path: 'ebos\appx.yml' }
+  - !task: { path: 'ebos\default.yml' }
+  - !task: { path: 'ebos\revert.yml' }
   - !task: { path: "tweaks.yml" }
 
   # Set hives to HKU default user
@@ -103,7 +107,7 @@ actions:
     wait: true
 
   # Set PowerShell execution policy to RemoteSigned from the previous "Unrestricted"
-  # This allows Atlas folder scripts (local) to run while requiring signatures for downloaded scripts
+  # This allows EBOS folder scripts (local) to run while requiring signatures for downloaded scripts
   - !writeStatus: { status: "Securing PowerShell execution policy" }
   - !registryValue:
     path: 'HKLM\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell'

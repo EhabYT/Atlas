@@ -1,0 +1,83 @@
+EBOS Optional Performance Features
+==================================
+
+Nothing in this folder is enabled by default.
+
+Hardware-Accelerated GPU Scheduling (HAGS)
+-------------------------------------------
+HAGS can improve frame pacing or reduce CPU overhead on some compatible
+systems. Results vary by GPU driver and game. Restart Windows after changing
+this setting. If you notice stutter, instability, or worse performance, use
+the disable script.
+
+Game Mode
+---------
+Game Mode prioritizes a running game by reducing background activity. It is
+applied only to the current user. Restart the game after changing this setting.
+
+Optimizations for Windowed Games
+--------------------------------
+This Windows 11 feature can reduce presentation latency for compatible
+DirectX 10 and DirectX 11 games running in windowed or borderless-windowed
+mode. It is applied only to the current user and does not affect games that
+are not compatible with the feature. Restart the game after changing it.
+
+Power Throttling
+----------------
+Windows uses power throttling to reduce background CPU usage and energy use.
+Disabling it can help long-running background workloads, but it can increase
+power consumption and temperatures. It is generally not recommended while a
+laptop is running on battery. Use the restore script to return to Windows'
+default behavior.
+
+Per-App GPU Preference
+----------------------
+Use "Set App to High Performance GPU" on multi-GPU systems to request the
+high-performance GPU for a chosen application. Windows and the graphics
+driver still determine the final GPU selection. Use the removal script on the
+same executable to return it to the normal Windows preference.
+
+DirectX Shader Cache
+--------------------
+Clearing the current user's DirectX shader cache can help troubleshoot visual
+artifacts or shader-cache corruption. It does not change game files, but games
+may stutter temporarily while their shaders are rebuilt.
+
+Storage Maintenance
+-------------------
+"Optimize System Drive" uses Windows' built-in Optimize Drives operation for
+the system volume. It sends TRIM to supported SSDs and defragments hard drives
+only when Windows considers it appropriate. It does not run automatically.
+Use "Open Storage Settings" to manage Storage Sense and review disk usage.
+
+Display and Frame Pacing
+------------------------
+Auto HDR uses a compatible HDR display to improve the presentation of supported
+SDR games. Variable Refresh Rate can improve smoothness for compatible games,
+displays, and graphics drivers. Both are per-user preferences and have no
+effect without compatible hardware. "Open Advanced Display Settings" provides
+access to Windows display and refresh-rate controls.
+
+CPU and Power Plans
+-------------------
+The High Performance power plan favors responsiveness over energy efficiency.
+Use it only when the additional heat and power use are acceptable, especially
+on laptops. The Balanced script restores Windows' standard balanced plan.
+"Open Advanced Power Settings" opens Windows' per-plan processor, sleep, and
+power-management controls. The existing EBOS power-saving controls remain
+available for more extensive power-management changes.
+
+Network Diagnostics
+-------------------
+"Test Network Latency" sends ten ICMP echo requests to a host that you choose;
+it is diagnostic only and does not change network settings. "Flush DNS Cache"
+clears locally cached DNS lookups, which can help after a DNS record changes.
+"View Network Configuration" shows adapter, IP, gateway, and DNS information;
+"Open Network Adapter Settings" opens Windows' adapter-management interface.
+
+DNS Controls
+------------
+"Use Cloudflare DNS" sets 1.1.1.1 and 1.0.0.1 on active physical adapters.
+It is optional and may not be appropriate for managed, work, school, VPN, or
+custom DNS environments. "Restore Automatic DNS" resets those adapters to the
+DNS servers supplied by the connected network.

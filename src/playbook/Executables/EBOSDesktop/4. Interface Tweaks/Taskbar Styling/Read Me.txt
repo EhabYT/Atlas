@@ -1,0 +1,18 @@
+Windows 11 Taskbar Styling
+==========================
+
+This folder links to the Windows 11 Taskbar Styling Guide by Ramen Software.
+The guide provides importable themes and styling targets for the Windhawk
+"Windows 11 Taskbar Styler" mod.
+
+How to use it
+-------------
+1. Open Install Windhawk and install Windhawk.
+2. In Windhawk, install the "Windows 11 Taskbar Styler" mod.
+3. Open the styling guide and choose a theme, including Liquid Glass options.
+4. Open Liquid Glass Taskbar Theme for the current LiquidGlass preset.
+5. Import the theme into the mod's Settings page.
+
+Taskbar styling is optional and is not applied automatically by EBOS.
+
+Source: https://github.com/ramensoftware/windows-11-taskbar-styling-guide
